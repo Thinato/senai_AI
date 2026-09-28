@@ -1,5 +1,5 @@
-import scipy.special
 import numpy as np
+from constants import *
 
 
 class Nnet:
@@ -10,7 +10,7 @@ class Nnet:
         self.num_output = num_output
         self.weight_input_hidden = np.random.uniform(-0.5, 0.5, size=(self.num_hidden, self.num_input))
         self.weight_hidden_output = np.random.uniform(-0.5, 0.5, size=(self.num_output, self.num_hidden))
-        self.activation_function = lambda x: scipy.special.expit(x)
+        self.activation_function = np.tanh # signed outputs, used as a steering direction
 
     def get_outputs(self, inputs_list):
         inputs = np.array(inputs_list, ndmin=2).T
